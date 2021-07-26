@@ -1,0 +1,60 @@
+import pyttsx3
+import speech_recognition 
+import datetime
+import wikipedia
+import webbrowser
+import os
+import smtplib
+
+
+print("Initializing Sness")
+
+engine=pyttsx3.init('sapi5')
+voices=engine.getProperty('voices')
+engine.setProperty('voice',voices[1].id)
+
+
+def speak(text):
+    engine.say(text)
+    engine.runAndWait()
+
+def Wishme():
+    hour=int(datetime.datetime.now().hour)
+    print(hour)
+
+    if hour>=0 and hour <12:
+        speak('Good morning  deepak i miss you so much')
+
+    elif hour>=12 and hour<18:
+        speak('Good afternoon sir how was your day')
+    
+    else:
+        speak('Good evening my lovely baby,hope you will continue with your work')
+
+
+
+    speak('I am sness. how may i help you?')
+
+#this fun will take command from microphone
+def takecommand():
+    while True:
+         r = sr.Recognizer()
+         with sr.Microphone() as source:
+            print("Say Something")
+        
+            audio=r.listen(source)
+         try:
+             print(r.recognize_google(audio),"\n")
+            
+         except:
+             pass
+            
+   
+   
+
+    print('say that again....')
+
+speak('Initializing  sness..')
+
+Wishme()
+takecommand()
